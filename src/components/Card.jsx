@@ -1,15 +1,20 @@
 import styled from "styled-components";
 
-const Card = () => {
+const Card = ({ date, temperature, weather }) => {
   return (
     <CardBox>
       <Title>
-        <span>2025.11.27</span> <span>🌤️</span>
+        <span>{date}</span>{" "}
+        <img
+          src={`https://openweathermap.org/img/wn/${weather[0].icon}.png`}
+          alt="weather-icon"
+          width={40}
+        />
       </Title>
-      <Weather>구름 조금</Weather>
+      <Weather>{weather[0].description}</Weather>
       <Temperature>
         <span>🌡️</span>
-        <span>10도</span>
+        <span>{temperature}도</span>
       </Temperature>
     </CardBox>
   );
@@ -18,6 +23,7 @@ const Card = () => {
 export default Card;
 
 const CardBox = styled.article`
+  min-width: 260px;
   height: 150px;
   background: white;
   padding: 30px 26px;
@@ -30,6 +36,7 @@ const CardBox = styled.article`
 
 const Title = styled.div`
   display: flex;
+  align-items: center;
   gap: 20px;
   font-size: 20px;
   font-weight: 600;

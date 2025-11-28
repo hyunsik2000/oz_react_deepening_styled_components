@@ -23,14 +23,12 @@ const Main = () => {
         );
 
         const data = await res.json();
-        console.log(data);
         if (!res.ok) {
           throw new Error("도시 불러오기 실패");
         }
 
         const city = data[0].name || "불러올 수 없는 장소";
         setCity(city);
-        console.log(city);
       },
       (error) => {
         setError(error.message);
@@ -41,11 +39,11 @@ const Main = () => {
   return (
     <MainContainer>
       {error ? (
-        <p style={{ color: "red" }}>오류: {error}</p>
+        <ErrorSign>{error}</ErrorSign>
       ) : (
         <>
           <Header city={city} />
-          <CardList lat={location.lat} lon={location.lon} />
+          <CardList lat={location.lat} lon={location.lon} API_KEY={API_KEY} />
         </>
       )}
     </MainContainer>
@@ -63,4 +61,8 @@ const MainContainer = styled.main`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+`;
+
+const ErrorSign = styled.p`
+  color: red;
 `;

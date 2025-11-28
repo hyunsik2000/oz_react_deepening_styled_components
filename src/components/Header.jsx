@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Header = ({ city }) => {
   return (
     <HeaderContainer>
-      <Logo>{city} - 5Days Weather</Logo>
+      <Logo>{city} 5Days Weather</Logo>
     </HeaderContainer>
   );
 };
